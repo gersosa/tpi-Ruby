@@ -1,6 +1,6 @@
 class QuestionController < ApplicationController
 	before_action :require_login, except: [:index, :show, :answers]
-	before_action :set_question, except: [:index, :answers, :answer_in, :answer_out]
+	before_action :set_question, except: [:index, :answers, :answer_in, :answer_out,:create]
 
 	def index
 		if params[:sort]=='pending_first'
