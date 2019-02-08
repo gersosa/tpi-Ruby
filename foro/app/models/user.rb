@@ -1,8 +1,9 @@
 class User < ApplicationRecord
-	validates_presence_of :name, :screen_name, :email, :password_digest
-	validates :email, :name, uniqueness: true
+	validates_presence_of :username, :screen_name, :email, :password_digest
+	validates :email, :username, uniqueness: true
 	has_secure_password
 	has_secure_token
+	belongs_to :question
 
   def self.valid_login?(email, password)
     user = find_by(email: email)
@@ -11,8 +12,7 @@ class User < ApplicationRecord
     end
   end
 
-  def allow_token_to_be_used_only_once
-    regenerate_token
+  def regenerate_token
     touch(:token_created_at)
   end
 
@@ -20,7 +20,7 @@ class User < ApplicationRecord
     invalidate_token
   end
 
-  def with_unexpired_token(token, period)
+  def self.with_unexpired_token(token, period)
     where(token: token).where('token_created_at >= ?', period).first
   end
 
