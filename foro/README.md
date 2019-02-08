@@ -23,7 +23,7 @@ Them:
 
 Create database : `createdb Example`
 
-Create role: `create role myapp with createdb login password 'password1';`
+Create role:`psql` and `create role myapp with createdb login password 'password1';`
 
 * Run `bundle install` to install all other dependencies
 
