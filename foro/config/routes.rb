@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 	put '/questions/:id', to: 'question#update'
 	put '/questions/:id/resolve', to: 'question#resolve'
 	delete '/questions/:id', to: 'question#destroy'
+	get '/questions/:question_id/answers', to: 'question#answers'
 
   post '/answers', to: 'answer#create'
   get '/answers', to: 'answer#index'

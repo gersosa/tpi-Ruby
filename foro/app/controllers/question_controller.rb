@@ -1,6 +1,6 @@
 class QuestionController < ApplicationController
-	before_action :require_login, except: [:index, :show]
-	before_action :set_question, except: [:index]
+	before_action :require_login, except: [:index, :show, :answers]
+	before_action :set_question, except: [:index, :answers]
 
 	def index
 		if params[:sort]=='pending_first'
@@ -55,6 +55,15 @@ class QuestionController < ApplicationController
 		else
 			render_unauthorized('You cant resolve this questions')
 		end		
+	end
+
+	def answers
+		begin	
+			@question = Question.find(params[:question_id])
+			render json: @question.answers.map { |answer| {content: answer.content, created: answer.created_at}}
+		rescue
+			render_unauthorized("Couldn't find Question with id")
+		end
 	end
 
 	private
