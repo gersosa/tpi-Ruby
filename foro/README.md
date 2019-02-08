@@ -9,6 +9,10 @@ Things you may want to cover:
 
 * System dependencies
 
+*If Can't install pg gem*
+
+`sudo apt-get install libpq-dev`
+
 * Configuration
 
 * Database creation
