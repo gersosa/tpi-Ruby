@@ -1,28 +1,49 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Live demo
+Live demo on => [heroku](https://rocky-scrubland-46590.herokuapp.com/questions)
 
-Things you may want to cover:
+## Getting Started
++ Clone the application with `git clone https://github.com/gersosa/tpi-Ruby.git
 
-* Ruby version
+## Dependencies
 
-* System dependencies
+* Ruby version 2.5.1 and above
+* Rails 2.5.1
+* PostgreSQL
 
-*If Can't install pg gem*
+### Downloading PostgreSQL
+Run these commands from terminal:
+
+`sudo apt updatee`
+
+`sudo apt install postgresql postgresql-contrib`
+
+Them:
+`sudo -i -u postgres`
+
+Create database : `createdb Example`
+
+Create role: `create role myapp with createdb login password 'password1';`
+
+* Run `bundle install` to install all other dependencies
+
+* Run  `rake db:migrate` 
+
+
+*If Can't install pg gem:
 
 `sudo apt-get install libpq-dev`
+## Running The Server
 
-* Configuration
+You can then run `rails s` or `rails server` and visit the page on the browser by typing `localhost:3000`. (*you can add the flag `-p <port_number>` to specify a different port number, e.i. `rails s -p 8000`*)
 
-* Database creation
 
-* Database initialization
 
-* How to run the test suite
+## Application Main Features
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Write a question
+* Answer to questions
+* Delete questions/answers if you're the owner
+* Register with username and password
+* log in/log out
+* authenticate
