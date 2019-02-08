@@ -6,11 +6,14 @@ Rails.application.routes.draw do
 
   post '/questions', to: 'question#create'
   get '/questions', to: 'question#index'
-
+  get '/questions/:id', to: 'question#show'
+	put '/questions/:id', to: 'question#update'
+	put '/questions/:id/resolve', to: 'question#resolve'
+	delete '/questions/:id', to: 'question#destroy'
 
   post '/answers', to: 'answer#create'
   get '/answers', to: 'answer#index'
 
   root 'welcome#index'
-  
+
 end

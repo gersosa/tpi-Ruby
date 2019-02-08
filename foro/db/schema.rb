@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2019_02_08_074220) do
   create_table "questions", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.boolean "status", default: true
+    t.boolean "status", default: false
     t.integer "answer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

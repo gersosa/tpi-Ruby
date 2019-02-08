@@ -3,7 +3,8 @@ class User < ApplicationRecord
 	validates :email, :username, uniqueness: true
 	has_secure_password
 	has_secure_token
-	belongs_to :question
+	has_many :questions, dependent: :destroy
+  	has_many :answers, dependent: :delete_all
 
   def self.valid_login?(email, password)
     user = find_by(email: email)
