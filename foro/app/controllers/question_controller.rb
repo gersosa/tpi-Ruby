@@ -1,6 +1,6 @@
 class QuestionController < ApplicationController
 	before_action :require_login, except: [:index, :show, :answers]
-	before_action :set_question, except: [:index, :answers]
+	before_action :set_question, except: [:index, :answers, :answer_in]
 
 	def index
 		if params[:sort]=='pending_first'
@@ -61,6 +61,25 @@ class QuestionController < ApplicationController
 		begin	
 			@question = Question.find(params[:question_id])
 			render json: @question.answers.map { |answer| {content: answer.content, created: answer.created_at}}
+		rescue
+			render_unauthorized("Couldn't find Question with id")
+		end
+	end
+
+	def answer_in
+		begin	
+			@question = Question.find(params[:question_id])
+			if not @question.status
+				@answer = @question.answers.new(params[:content], current_user)
+				@answer.user_id = current_user.id
+				if @answer.save
+		      render json: @answer, status: :created
+		    else
+		      render json: @answer.errors, status: :unprocessable_entity
+		    end
+			else
+				render json: 'Question resolved',status: :unprocessable_entity
+			end
 		rescue
 			render_unauthorized("Couldn't find Question with id")
 		end
