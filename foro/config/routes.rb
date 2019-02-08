@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 	delete '/questions/:id', to: 'question#destroy'
 	get '/questions/:question_id/answers', to: 'question#answers'
 	post '/questions/:question_id/answers', to: 'question#answer_in'
+	delete '/questions/:question_id/answers/:id', to: 'question#answer_out'
 
   post '/answers', to: 'answer#create'
   get '/answers', to: 'answer#index'

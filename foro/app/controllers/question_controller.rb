@@ -1,6 +1,6 @@
 class QuestionController < ApplicationController
 	before_action :require_login, except: [:index, :show, :answers]
-	before_action :set_question, except: [:index, :answers, :answer_in]
+	before_action :set_question, except: [:index, :answers, :answer_in, :answer_out]
 
 	def index
 		if params[:sort]=='pending_first'
@@ -83,6 +83,20 @@ class QuestionController < ApplicationController
 		rescue
 			render_unauthorized("Couldn't find Question with id")
 		end
+	end
+
+	def answer_out
+		@answer = Answer.find(params[:id])
+		@question = Question.find(params[:question_id])
+		if current_user.id == @answer.user_id
+			if @question.answer_id != @answer.id
+				@answer.destroy
+			else
+				render_unauthorized('You cant remove this answer but is selected')
+			end
+		else
+			render_unauthorized('You cant remove this answer')
+		end		
 	end
 
 	private
