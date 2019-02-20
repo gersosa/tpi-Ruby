@@ -8,7 +8,7 @@ class QuestionController < ApplicationController
 		else
 			@questions = Question.order('created_at DESC').first(50)
 		end
-		render json: @questions.map { |question| {title: question.title, description: question.description[0,120]+'...'}}
+		render json: @questions.map { |question| {title: question.title, description: question.description[0,120]+'...'}}, status: 200
 	end
 	# POST Crea una nueva pregunta con los datos provistos en la petición. 
 	def create

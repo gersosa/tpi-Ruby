@@ -37,6 +37,12 @@ Create role:`psql` and `create role myapp with createdb login password 'password
 
 You can then run `rails s` or `rails server` and visit the page on the browser by typing `localhost:3000`. (*you can add the flag `-p <port_number>` to specify a different port number, e.i. `rails s -p 8000`*)
 
+## Running Tests
+You can then run:
+* `rspec spec/controllers/user_controller_controller_spec.rb`
+* `rspec spec/controllers/answer_controller_controller_spec.rb`
+* `rspec spec/controllers/question_controller_controller_spec.rb`
+
 
 
 ## Application Main Features
