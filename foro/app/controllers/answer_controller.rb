@@ -7,7 +7,7 @@ before_action :set_question
       { content: answer.content,
         updated_at: answer.updated_at,
         id: answer.id }
-    }
+    }, status: 200
   end
 
   def create
