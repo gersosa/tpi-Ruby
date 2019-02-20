@@ -6,8 +6,8 @@ class User < ApplicationRecord
 	has_many :questions, dependent: :destroy
   has_many :answers, dependent: :delete_all
 
-  def self.valid_login?(email, password)
-    user = find_by(email: email)
+  def self.valid_login?(username, password)
+    user = find_by(username: username)
     if user && user.authenticate(password)
       user
     end
