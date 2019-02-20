@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :answer do
     question
-    content { Faker::Lorem.character }
+    content { Faker::StarWars.character }
     user
     created_at { Faker::Number.number(10) }
     updated_at { Faker::Number.number(10) }
@@ -10,8 +10,8 @@ end
 
 FactoryBot.define do
   factory :question do
-    title { Faker::Lorem.character }
-    description { Faker::Lorem.character }
+    title { Faker::StarWars.character }
+    description { Faker::StarWars.character }
     status false
     user
     created_at { Faker::Number.number(10) }
@@ -25,9 +25,9 @@ end
 FactoryBot.define do
   factory :user do
     username { Faker::Lorem.characters(10) }
-    password 'foobar234423'
+    password { Faker::Lorem.characters(10) }
     screen_name { Faker::Lorem.characters(10) }
-    sequence(:email) {|n| "user#{n}@mail.com" }
+    sequence(:email) {|n| "test#{n}@mail.com" }
     created_at { Faker::Number.number(10) }
     updated_at { Faker::Number.number(10) }
   end

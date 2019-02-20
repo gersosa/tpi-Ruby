@@ -5,9 +5,10 @@ class UsersController < ApplicationController
    	@user = User.create(user_params)
    	if @user.save
    		response = { message: 'User created successfully'}
-   		render json: response, status: :created 
+   		render json: response, status: 201 
    	else
-   		render json: @user.errors, status: :bad
+         response = { message: @user.errors.to_a.join(' ')}
+   		render json: response, status: 422
    	end 
    end
 
