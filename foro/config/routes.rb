@@ -17,6 +17,5 @@ Rails.application.routes.draw do
   post '/answers', to: 'answer#create'
   get '/answers', to: 'answer#index'
 
-  root 'welcome#index'
 
 end
