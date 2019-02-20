@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe SessionControllerController, type: :controller do
+RSpec.describe 'SessionControllerController Api', type: :request do
 
   describe 'POST /sessions' do
     # create test user
